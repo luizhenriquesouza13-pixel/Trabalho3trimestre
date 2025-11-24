@@ -1,23 +1,19 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main() {
-    int n, i;
+    char s[100];
+    int i, cont = 0;
 
-    scanf("%d", &n);
+    fgets(s, 100, stdin);
 
-    int ehPrimo = 1;   // assume que é primo
-
-    for (i = 2; i * i <= n; i++) {
-        if (n % i == 0) {
-            ehPrimo = 0;
-            break;      // achou o menor divisor
-        }
+    for (i = 0; s[i] != '\0'; i++) {
+        char c = tolower(s[i]);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+            cont++;
     }
 
-    if (ehPrimo)
-        printf("Primo\n");
-    else
-        printf("Menor divisor: %d\n", i);
+    printf("Vogais: %d\n", cont);
 
     return 0;
 }
